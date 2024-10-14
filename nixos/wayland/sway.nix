@@ -11,11 +11,7 @@
     mako # Notification system (developed by SwayWM maintainer)
     fuzzel # Dmenu replacement for launching apps
     waybar # Status bar for Sway
-    wezterm # Terminal emulator
   ];
-
-  # Enable GNOME Keyring for managing secrets
-  services.gnome.gnome-keyring.enable = true;
 
   # Enable Sway window manager with GTK support
   programs.sway = {

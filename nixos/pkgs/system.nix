@@ -5,6 +5,8 @@
   environment.systemPackages = with pkgs; [
     firefox-bin # Firefox web browser
     git # Distributed version control system
+
+    # Console utilities
     fishPlugins.done # Completion plugin for Fish
     fishPlugins.fzf-fish # Fuzzy finder integration for Fish
     fishPlugins.forgit # Plugin for managing forgotten commands
@@ -12,10 +14,25 @@
     fzf # Command-line fuzzy finder
     fishPlugins.grc # Colorized output for commands
     grc # Generalized colorizer
+
+    # Terminal utilities
+    wezterm # Terminal emulator
+
+    # System utilities
+    dolphin # File manager
+    kdePackages.qtwayland # Qt Wayland support for Dolphin
+    kdePackages.qtsvg # Qt SVG icons support for Dolphin
   ];
 
   # System fonts for various applications
   fonts.packages = with pkgs; [
+    noto-fonts # General-purpose fonts
+    noto-fonts-cjk # CJK fonts (Chinese, Japanese, Korean)
+    noto-fonts-emoji # Emoji support
+    liberation_ttf # Liberation fonts
+    nerdfonts # Popular patched fonts with icons
+    roboto-mono # Monospaced font (Roboto Mono)
+    font-awesome # Icon font (Font Awesome)
   ];
 
   # Enable Fish shell

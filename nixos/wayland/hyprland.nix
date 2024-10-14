@@ -8,8 +8,12 @@
   };
 
   # Add default packages
-  environment.systemPackages = [
-    pkgs.kitty
+  environment.systemPackages = with pkgs; [
+    waybar # Status bar for Sway
+    swww # Wallpaper utility
+    kitty # Default Terminal emulator for Hyprland
+    fuzzel # Dmenu replacement for launching apps
+    nwg-displays # Manage displays for Wayland
   ];
 
   environment.sessionVariables = {
