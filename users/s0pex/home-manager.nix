@@ -8,6 +8,9 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
+    # Terminal additions
+    oh-my-fish
+
     # Dotfiles
     chezmoi # Dotfile manager
 

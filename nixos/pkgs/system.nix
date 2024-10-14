@@ -21,6 +21,7 @@
 
     # System utilities
     xfce.thunar # File manager
+    htop
   ];
 
   # System fonts for various applications
