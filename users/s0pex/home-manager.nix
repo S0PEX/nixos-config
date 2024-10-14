@@ -13,7 +13,7 @@
 
     # Communications
     discord # Discord chat client
-
+    ferdium # Multi service chat client
     # Git clients
     gitkraken
 
