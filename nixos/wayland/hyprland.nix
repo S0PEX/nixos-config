@@ -20,6 +20,7 @@
     swww # Wallpaper utility
     waybar # Status bar for Sway
     fuzzel # Dmenu replacement for launching apps
+    wlogout # Logout utility for Wayland
     wl-clipboard # Clipboard utilities (wl-copy, wl-paste) for Wayland
     nwg-displays # Manage displays for Wayland
 
