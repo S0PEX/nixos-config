@@ -4,6 +4,7 @@
   # System packages for Fish shell and related plugins
   environment.systemPackages = with pkgs; [
     firefox-bin # Firefox web browser
+    librewolf # LibreWolf web browser
     git # Distributed version control system
 
     # Console utilities
