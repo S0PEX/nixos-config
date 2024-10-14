@@ -14,6 +14,9 @@
     # Communications
     discord # Discord chat client
 
+    # Git clients
+    gitkraken
+
     # IDEs
     vscode # Visual Studio Code
     #jetbrains.goland         # GoLand IDE
