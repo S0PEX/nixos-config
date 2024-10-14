@@ -15,8 +15,8 @@
     fishPlugins.grc # Colorized output for commands
     grc # Generalized colorizer
 
-    # Terminal utilities
-    wezterm # Terminal emulator
+    # Terminals and terminal utilities
+    kitty
 
     # System utilities
     xfce.thunar # File manager
