@@ -1,4 +1,16 @@
 {
     "editor.formatOnSave": true,
-    "editor.formatOnPaste": true
+    "editor.formatOnPaste": true,
+    "conventionalCommits.scopes": [
+        "hyprland",
+        "pkgs",
+        "users",
+        "modules",
+        "docs",
+        "hardware",
+        "wayland",
+        "sway",
+        "flake",
+        "vscode"
+    ],
 }
