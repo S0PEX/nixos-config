@@ -19,9 +19,7 @@
     wezterm # Terminal emulator
 
     # System utilities
-    dolphin # File manager
-    kdePackages.qtwayland # Qt Wayland support for Dolphin
-    kdePackages.qtsvg # Qt SVG icons support for Dolphin
+    xfce.thunar # File manager
   ];
 
   # System fonts for various applications
