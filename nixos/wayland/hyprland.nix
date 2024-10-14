@@ -16,13 +16,17 @@
 
   # Add default packages
   environment.systemPackages = with pkgs; [
-    waybar # Status bar for Sway
+    mako # Notification system (developed by SwayWM maintainer)
     swww # Wallpaper utility
-    kitty # Default Terminal emulator for Hyprland
+    waybar # Status bar for Sway
     fuzzel # Dmenu replacement for launching apps
+    wl-clipboard # Clipboard utilities (wl-copy, wl-paste) for Wayland
     nwg-displays # Manage displays for Wayland
+
+    kitty # Default Terminal emulator for Hyprland
   ];
 
+  # Set session variables
   environment.sessionVariables = {
     # If cursor becomes invisible
     WLR_NO_HARDWARE_CURSORS = "1";
