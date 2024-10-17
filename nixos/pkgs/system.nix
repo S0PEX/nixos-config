@@ -24,6 +24,9 @@
     htop
   ];
 
+  # Enable GVFS: Mount, trash, and other functionalities
+  services.gvfs.enable = true;
+
   # System fonts for various applications
   fonts.packages = with pkgs; [
     noto-fonts # General-purpose fonts
