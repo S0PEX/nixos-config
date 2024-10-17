@@ -13,6 +13,7 @@
       # Additional groups for the user
       "networkmanager"
       "wheel" # Allows the user to use sudo
+      "docker" # Allows the user to use Docker
     ];
   };
 }

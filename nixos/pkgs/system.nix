@@ -37,4 +37,7 @@
 
   # Enable Fish shell
   programs.fish.enable = true;
+
+  # Enable Docker
+  virtualisation.docker.enable = true;
 }
