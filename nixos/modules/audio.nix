@@ -9,6 +9,7 @@
 
   services.pipewire = {
     enable = true; # Enable PipeWire service
+    wireplumber.enable = true; # Enable WirePlumber service
     alsa.enable = true; # Enable ALSA support
     alsa.support32Bit = true; # Support 32-bit ALSA applications
     pulse.enable = true; # Enable PulseAudio compatibility layer
