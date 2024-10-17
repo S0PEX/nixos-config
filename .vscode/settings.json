@@ -11,6 +11,7 @@
         "wayland",
         "sway",
         "flake",
-        "vscode"
+        "vscode",
+        "lib"
     ],
 }
