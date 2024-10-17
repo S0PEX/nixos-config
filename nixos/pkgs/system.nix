@@ -22,6 +22,9 @@
     # System utilities
     xfce.thunar # File manager
     htop
+
+    # Network shares
+    cifs-utils
   ];
 
   # Enable GVFS: Mount, trash, and other functionalities
