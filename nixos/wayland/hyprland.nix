@@ -2,16 +2,20 @@
 
 {
   # Enable Hyprland with XWayland support
-  programs.hyprland = {
-    enable = true;
+  programs = {
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
     xwayland.enable = true;
   };
 
   # Enable XDG portal support
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-hyprland
     xdg-desktop-portal-gtk
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-hyprland
   ];
 
   # Add default packages
