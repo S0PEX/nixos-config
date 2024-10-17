@@ -30,8 +30,8 @@ nixpkgs.lib.nixosSystem
     # Enable home-manager for managing user configurations
     home-manager
     {
-      home-manager. backupFileExtension = "hm-backup";
-      home-manager. useGlobalPkgs = true;
+      home-manager.backupFileExtension = "hm-backup";
+      home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.users.${user} = import userHMConfig {
         inputs = inputs;
