@@ -8,6 +8,9 @@ name:
 }:
 
 let
+  # Pkgs
+  pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
+
   # The config files for this system.
   systemConfig = ../hardware/${name}/configuration.nix;
   userConfig = ../users/${user}/nixos.nix;
@@ -34,7 +37,7 @@ nixpkgs.lib.nixosSystem
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = {
-        pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system}; # Pass the unstable packages to home-manager arguments
+        inherit pkgs-unstable; # Pass the unstable packages to home-manager arguments
       };
       home-manager.users.${user} = import userHMConfig {
         inputs = inputs;
@@ -50,7 +53,7 @@ nixpkgs.lib.nixosSystem
     # better based on these values.
     {
       config._module.args = {
-        inputs = inputs;
+        inherit inputs pkgs-unstable;
       };
     }
   ];
