@@ -9,8 +9,6 @@
 
   # User packages
   home.packages = with pkgs; [
-    pkgs-unstable.zed-editor
-
     # Terminal additions
     oh-my-fish
 
@@ -21,11 +19,12 @@
     discord # Discord chat client
     ferdium # Multi service chat client
 
-    # Writing tools
+    # Writing tools and editors
+    vscode # Visual Studio Code
     texliveFull # Full TeX Live distribution
+    pkgs-unstable.zed-editor # Zed editor
 
     # IDEs
-    vscode # Visual Studio Code
     jetbrains.goland # GoLand IDE
     jetbrains.idea-ultimate # IntelliJ IDEA
     jetbrains.pycharm-professional # PyCharm
