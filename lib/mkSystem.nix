@@ -33,6 +33,9 @@ nixpkgs.lib.nixosSystem
       home-manager.backupFileExtension = "hm-backup";
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
+      home-manager.extraSpecialArgs = {
+        pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system}; # Pass the unstable packages to home-manager arguments
+      };
       home-manager.users.${user} = import userHMConfig {
         inputs = inputs;
       };
