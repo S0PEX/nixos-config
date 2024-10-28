@@ -19,6 +19,9 @@
     discord # Discord chat client
     ferdium # Multi service chat client
 
+    # Multimedia
+    youtube-music
+
     # Writing tools and editors
     vscode # Visual Studio Code
     texliveFull # Full TeX Live distribution
