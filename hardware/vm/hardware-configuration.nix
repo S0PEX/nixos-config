@@ -29,5 +29,6 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
 
+  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
