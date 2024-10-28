@@ -12,6 +12,7 @@
         "sway",
         "flake",
         "vscode",
-        "lib"
+        "lib",
+        "scripts"
     ],
 }
