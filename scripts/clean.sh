@@ -7,4 +7,4 @@ sudo nix-collect-garbage --delete-old
 sudo nix store optimise
 
 # Ensure that the NixOS configuration is up-to-date
-./sync.sh
+./apply.sh
