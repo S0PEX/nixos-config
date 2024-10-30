@@ -26,6 +26,8 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
+  # Switch to localtime instead of UTC to prevent time synchronization issues when dual-booting with Windows.
+  time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -97,5 +99,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
