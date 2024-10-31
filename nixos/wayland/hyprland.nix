@@ -20,7 +20,8 @@
 
   # Add default packages
   environment.systemPackages = with pkgs; [
-    mako # Notification system (developed by SwayWM maintainer)
+    swaynotificationcenter # Notification daemon
+    swaylock # Screen locker for Sway
     swww # Wallpaper utility
     waybar # Status bar for Sway
     fuzzel # Dmenu replacement for launching apps
