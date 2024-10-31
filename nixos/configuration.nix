@@ -15,6 +15,13 @@
   # Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Enable garbage collection for configurations that are older than three days.
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 3d";
+  };
+
   # Enable networking
   networking.networkmanager.enable = true;
 
