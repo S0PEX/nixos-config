@@ -39,6 +39,7 @@
     # Programming languages
     go # Go programming language
     nodejs_20 # Node.js
+    pnpm # Node.js package manager
 
     # Git clients
     gitkraken
