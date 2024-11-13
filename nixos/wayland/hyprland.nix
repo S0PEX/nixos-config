@@ -21,7 +21,7 @@
   # Add default packages
   environment.systemPackages = with pkgs; [
     swaynotificationcenter # Notification daemon
-    swaylock # Screen locker for Sway
+    hyprlock # Screen locker
     swww # Wallpaper utility
     waybar # Status bar for Sway
     fuzzel # Dmenu replacement for launching apps
