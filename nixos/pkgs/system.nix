@@ -20,14 +20,17 @@
     kitty
 
     # System utilities
-    xfce.thunar # File manager
     htop
 
     # Network shares
     cifs-utils
   ];
 
+  # Archive utility required for Thunar archive plugin
+  programs.file-roller.enable = true;
+
   # Enable thunar plugins for archive and volume management
+  programs.thunar.enable = true;
   programs.thunar.plugins = with pkgs.xfce; [
     thunar-archive-plugin
     thunar-volman
@@ -45,6 +48,7 @@
     nerdfonts # Popular patched fonts with icons
     roboto-mono # Monospaced font (Roboto Mono)
     font-awesome # Icon font (Font Awesome)
+    source-code-pro # Monospaced font (Source Code Pro)
   ];
 
   # Enable Fish shell
