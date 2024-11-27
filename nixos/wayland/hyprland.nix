@@ -28,6 +28,7 @@
     wlogout # Logout utility for Wayland
     wl-clipboard # Clipboard utilities (wl-copy, wl-paste) for Wayland
     nwg-displays # Manage displays for Wayland
+    nwg-look # GTK theme manager for Wayland
     xwaylandvideobridge # XWayland video bridge
 
     kitty # Default Terminal emulator for Hyprland
