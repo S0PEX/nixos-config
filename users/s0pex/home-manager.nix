@@ -7,8 +7,8 @@
   # to use the old state version.
   home.stateVersion = "24.05";
 
-  # User packages
-  home.packages = with pkgs; [
+  # Stable user packages
+  home.packages = with pkgs-unstable; [
     # Terminal additions
     oh-my-fish
 
@@ -25,24 +25,27 @@
     # Writing tools and editors
     vscode # Visual Studio Code
     texliveFull # Full TeX Live distribution
-    pkgs-unstable.zed-editor # Zed editor
 
     # IDEs
-    jetbrains.goland # GoLand IDE
-    jetbrains.idea-ultimate # IntelliJ IDEA
-    jetbrains.pycharm-professional # PyCharm
-    jetbrains.datagrip # DataGrip
-
-    # Formatter for Nix
-    nixpkgs-fmt
+    #jetbrains.goland # GoLand IDE
+    #jetbrains.idea-ultimate # IntelliJ IDEA
+    #jetbrains.pycharm-professional # PyCharm
+    #jetbrains.datagrip # DataGrip
 
     # Programming languages
     go # Go programming language
     nodejs_20 # Node.js
     pnpm # Node.js package manager
+    deno # Alternative JavaScript runtime
+
+    # Formatter for Nix
+    nixpkgs-fmt
 
     # Git clients
     gitkraken
+
+    # Themes
+    yaru-theme
   ];
 
   # Theme settings
@@ -50,7 +53,7 @@
     enable = true;
     theme = {
       name = "Yaru-prussiangreen-dark";
-      package = pkgs.yaru-theme;
+      package = pkgs-unstable.yaru-theme;
     };
 
     # Prefer dark theme
