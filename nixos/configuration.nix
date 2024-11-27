@@ -52,8 +52,5 @@
   # Configure console keymap
   console.keyMap = "de";
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   system.stateVersion = "24.05";
 }
