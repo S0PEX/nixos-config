@@ -15,10 +15,10 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... } @inputs:
     let
       mkSystem = import ./lib/mkSystem.nix {
-        inherit nixpkgs inputs;
+        inherit nixpkgs nixpkgs-unstable inputs;
       };
     in
     {
