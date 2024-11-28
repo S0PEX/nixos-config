@@ -24,6 +24,7 @@
 
     # Writing tools and editors
     vscode # Visual Studio Code
+    code-cursor # Cursor AI Editor
     texliveFull # Full TeX Live distribution
 
     # IDEs
