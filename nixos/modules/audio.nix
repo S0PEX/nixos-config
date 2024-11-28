@@ -7,11 +7,14 @@
   # Enable PipeWire for audio management
   sound.enable = false; # Disable the default sound management
 
+  # Configure PipeWire with all common features enabled
   services.pipewire = {
-    enable = true; # Enable PipeWire service
-    wireplumber.enable = true; # Enable WirePlumber service
-    alsa.enable = true; # Enable ALSA support
-    alsa.support32Bit = true; # Support 32-bit ALSA applications
-    pulse.enable = true; # Enable PulseAudio compatibility layer
+    enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true; # Support 32-bit ALSA applications
+    };
+    pulse.enable = true; # Enable PulseAudio compatibility
+    wireplumber.enable = true; # Enable wireplumber service
   };
 }

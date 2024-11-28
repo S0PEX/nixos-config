@@ -27,20 +27,12 @@
     code-cursor # Cursor AI Editor
     texliveFull # Full TeX Live distribution
 
-    # IDEs
-    #jetbrains.goland # GoLand IDE
-    #jetbrains.idea-ultimate # IntelliJ IDEA
-    #jetbrains.pycharm-professional # PyCharm
-    #jetbrains.datagrip # DataGrip
-
-    # Programming languages
+    # Programming languages and tools
     go # Go programming language
     nodejs_20 # Node.js
     pnpm # Node.js package manager
     deno # Alternative JavaScript runtime
-
-    # Formatter for Nix
-    nixpkgs-fmt
+    nixpkgs-fmt # Formatter for Nix
 
     # Git clients
     gitkraken
@@ -57,7 +49,7 @@
       package = pkgs-unstable.yaru-theme;
     };
 
-    # Prefer dark theme
+    # Prefer dark theme for both GTK3 and GTK4
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };

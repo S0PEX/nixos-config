@@ -30,11 +30,13 @@
   programs.file-roller.enable = true;
 
   # Enable thunar plugins for archive and volume management
-  programs.thunar.enable = true;
-  programs.thunar.plugins = with pkgs.xfce; [
-    thunar-archive-plugin
-    thunar-volman
-  ];
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-volman
+      thunar-archive-plugin
+    ];
+  };
 
   # Enable GVFS: Mount, trash, and other functionalities
   services.gvfs.enable = true;

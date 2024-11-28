@@ -23,18 +23,19 @@
     in
     {
       # Define NixOS configurations
-      nixosConfigurations.workstation = mkSystem "workstation" {
-        user = "s0pex"; # Specify the user for the configuration
+      nixosConfigurations = {
+        workstation = mkSystem "workstation" {
+          user = "s0pex"; # Specify the user for the configuration
+          # Pass extra arguments to the configuration
+          # i.e., config.hardware.nvidia.enable = true;
+          config = {
+            hardware.nvidia.enable = true; # Enable nvidia driver
+          };
+        };
 
-        # Pass extra arguments to the configuration
-        # i.e., config.hardware.nvidia.enable = true;
-        config = {
-          hardware.nvidia.enable = true; # Enable nvidia driver
+        vm = mkSystem "vm" {
+          user = "s0pex"; # Specify the user for the configuration
         };
       };
-      nixosConfigurations.vm = mkSystem "vm" {
-        user = "s0pex"; # Specify the user for the configuration
-      };
-
     };
 }
