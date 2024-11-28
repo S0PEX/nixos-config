@@ -6,6 +6,13 @@ in
   # Enable the X server
   services.xserver.enable = true;
 
+  # Configure the keyboard layout for X11
+  services.xserver.xkb = {
+    layout = "de"; # Set layout to German
+    variant = ""; # Use the default variant
+  };
+
+
   # Enable SDDM (Simple Desktop Display Manager) with Wayland support
   services.displayManager.sddm = {
     enable = true;
@@ -13,12 +20,6 @@ in
     theme = "sddm-astronaut-theme";
     package = pkgs-unstable.kdePackages.sddm; # Use Qt6 version of SDDM
     extraPackages = [ sddm-astronaut ];
-  };
-
-  # Configure the keyboard layout for X11
-  services.xserver.xkb = {
-    layout = "de"; # Set layout to German
-    variant = ""; # Use the default variant
   };
 
   # Add ssdm themes to systemPackages
