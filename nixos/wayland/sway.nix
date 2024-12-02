@@ -18,15 +18,4 @@
     enable = true;
     wrapperFeatures.gtk = true;
   };
-
-  # Fonts required by Waybar and other system components
-  fonts.packages = with pkgs; [
-    font-awesome # Icon font (Font Awesome)
-    liberation_ttf # Liberation fonts
-    nerdfonts # Popular patched fonts with icons
-    noto-fonts # General-purpose fonts
-    noto-fonts-cjk # CJK fonts (Chinese, Japanese, Korean)
-    noto-fonts-emoji # Emoji support
-    roboto-mono # Monospaced font (Roboto Mono)
-  ];
 }
