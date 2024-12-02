@@ -1,14 +1,17 @@
-{ inputs, ... }:
+{ inputs, systemVersion, ... }:
 
 { config, pkgs, pkgs-unstable, ... }:
 
 {
   # Home-manager 22.11 requires this be set. We never set it so we have
   # to use the old state version.
-  home.stateVersion = "24.05";
+  home.stateVersion = systemVersion;
 
   # Stable user packages
   home.packages = with pkgs-unstable; [
+    # Browsers
+    brave
+
     # Terminal additions
     oh-my-fish
 

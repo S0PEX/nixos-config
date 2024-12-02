@@ -2,23 +2,28 @@
   description = "NixOS systems and tools by S0PEX";
 
   inputs = {
+
     # Define the primary nixpkgs repository for stable configurations
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.11";
 
     # Define the nixpkgs-unstable repository for testing or using more recent packages
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
     # Define home-manager for managing user configurations
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... } @inputs:
     let
+      # NixOS system version - used to align nixpkgs and home-manager versions
+      # Please keep in sync with the version passed to nixpkgs and home-manager URLs
+      systemVersion = "24.11";
+
       mkSystem = import ./lib/mkSystem.nix {
-        inherit nixpkgs nixpkgs-unstable inputs;
+        inherit nixpkgs nixpkgs-unstable systemVersion inputs;
       };
     in
     {
