@@ -44,7 +44,7 @@
   # System fonts for various applications
   fonts.packages = with pkgs; [
     noto-fonts # General-purpose fonts
-    noto-fonts-cjk # CJK fonts (Chinese, Japanese, Korean)
+    noto-fonts-cjk-sans # CJK fonts (Chinese, Japanese, Korean)
     noto-fonts-emoji # Emoji support
     liberation_ttf # Liberation fonts
     nerdfonts # Popular patched fonts with icons

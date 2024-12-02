@@ -1,5 +1,5 @@
 # This function creates a NixOS system based on a setup for a particular architecture.
-{ nixpkgs, nixpkgs-unstable, inputs }:
+{ nixpkgs, nixpkgs-unstable, systemVersion, inputs }:
 
 name:
 { system ? "x86_64-linux"
@@ -8,6 +8,9 @@ name:
 }:
 
 let
+  # Import the Nixpkgs library
+  lib = nixpkgs.lib;
+
   # Package configuration
   pkgConfig = {
     pkgs = import nixpkgs {
@@ -35,7 +38,7 @@ let
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = { inherit (pkgConfig) pkgs-unstable; };
-      users.${user} = import paths.userHM { inherit inputs; };
+      users.${user} = import paths.userHM { inherit inputs systemVersion; };
     };
   };
 
@@ -47,7 +50,7 @@ let
     };
   };
 in
-nixpkgs.lib.nixosSystem {
+lib.nixosSystem {
   inherit (pkgConfig) pkgs;
 
   modules = [
@@ -56,7 +59,12 @@ nixpkgs.lib.nixosSystem {
     paths.user # User-specific configuration
     inputs.home-manager.nixosModules.home-manager
     homeManagerConfig
-    { inherit config; } # Forward configuration options
+    {
+      inherit config;
+    } # Forward configuration
+    {
+      system.stateVersion = lib.mkForce systemVersion;
+    }
     moduleArgs
   ];
 }
