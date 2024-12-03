@@ -21,6 +21,9 @@
 
     # System utilities
     htop
+    python3 # Python programming language
+    lm_sensors # Hardware monitoring tool
+    pulseaudio # PulseAudio sound server, we only use it for its ctl to interact with pipewire
 
     # Network shares
     cifs-utils
