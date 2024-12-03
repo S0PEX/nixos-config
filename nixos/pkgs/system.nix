@@ -21,6 +21,7 @@
 
     # System utilities
     htop
+    killall
     python3 # Python programming language
     lm_sensors # Hardware monitoring tool
     pulseaudio # PulseAudio sound server, we only use it for its ctl to interact with pipewire
