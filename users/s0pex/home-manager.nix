@@ -30,7 +30,7 @@
     code-cursor # Cursor AI Editor
     texliveFull # Full TeX Live distribution
 
-    # Programming languages and tools
+    # Programming languages and development tools
     go # Go programming language
     nodejs_20 # Node.js
     pnpm # Node.js package manager
@@ -43,6 +43,13 @@
     # Themes
     yaru-theme
   ];
+
+  # Starship terminal extension
+  programs.fish.enable = true; # Enable Fish shell to ensure compatibility
+  programs.starship = {
+    enable = true;
+  };
+
 
   # Theme settings
   gtk = {
