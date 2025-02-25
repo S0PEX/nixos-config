@@ -2,7 +2,6 @@
   description = "NixOS systems and tools by S0PEX";
 
   inputs = {
-
     # Define the primary nixpkgs repository for stable configurations
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.11";
 
