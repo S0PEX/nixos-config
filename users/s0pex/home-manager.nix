@@ -46,7 +46,7 @@
     deno # Alternative JavaScript runtime
     pnpm
     nodejs_22
-    nixpkgs-fmt # Formatter for Nix
+    nixfmt # Formatter for Nix
   ];
 
   # Terminal extension
