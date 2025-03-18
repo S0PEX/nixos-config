@@ -15,6 +15,7 @@
     fzf # Command-line fuzzy finder
     fishPlugins.grc # Colorized output for commands
     grc # Generalized colorizer
+    direnv # Load and unload shell extensions
 
     # Terminals and terminal utilities
     kitty
