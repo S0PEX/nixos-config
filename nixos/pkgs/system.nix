@@ -66,6 +66,8 @@
     roboto-mono # Monospaced font (Roboto Mono)
     font-awesome # Icon font (Font Awesome)
     source-code-pro # Monospaced font (Source Code Pro)
+  ] ++ [
+    pkgs-unstable.nerd-fonts.jetbrains-mono
   ];
 
   # Enable Fish shell
