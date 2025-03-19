@@ -5,12 +5,11 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./wayland/default.nix # Enable Wayland with window manager
-      ./modules/default.nix # Enable common modules
-      ./pkgs/default.nix # Packages
-    ];
+  imports = [
+    ./wayland/default.nix # Enable Wayland with window manager
+    ./modules/default.nix # Enable common modules
+    ./pkgs/default.nix # Packages
+  ];
 
   # Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

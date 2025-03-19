@@ -51,9 +51,7 @@
 
   # Terminal extension
   programs.fish.enable = true;
-  programs.starship = {
-    enable = true;
-  };
+  programs.starship = { enable = true; };
 
   programs.zoxide = {
     enable = true;
@@ -77,7 +75,8 @@
   # Theme settings
   home.pointerCursor = {
     gtk.enable = true;
-    x11.enable = true; # Hyprland is falling back to X11's XCURSOR_THEME, if HYPRCURSOR_THEME is not set. When not set, cursor theme is not constantly applied to all applications
+    x11.enable =
+      true; # Hyprland is falling back to X11's XCURSOR_THEME, if HYPRCURSOR_THEME is not set. When not set, cursor theme is not constantly applied to all applications
     package = pkgs.bibata-cursors;
     name = "Bibata-Original-Classic";
     size = 22;

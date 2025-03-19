@@ -2,9 +2,7 @@
 
 {
   # Create option to conditionally enable this module
-  options.hardware.nvidia = {
-    enable = lib.mkEnableOption "nvidia driver";
-  };
+  options.hardware.nvidia = { enable = lib.mkEnableOption "nvidia driver"; };
 
   config = lib.mkIf config.hardware.nvidia.enable {
     # Enable graphics

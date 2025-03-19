@@ -2,10 +2,7 @@
 { nixpkgs, nixpkgs-unstable, systemVersion, inputs }:
 
 name:
-{ system ? "x86_64-linux"
-, user
-, config ? { }
-}:
+{ system ? "x86_64-linux", user, config ? { } }:
 
 let
   # Import the Nixpkgs library
@@ -49,8 +46,7 @@ let
       inherit (pkgConfig) pkgs-unstable;
     };
   };
-in
-lib.nixosSystem {
+in lib.nixosSystem {
   inherit (pkgConfig) pkgs;
 
   modules = [
@@ -59,12 +55,8 @@ lib.nixosSystem {
     paths.user # User-specific configuration
     inputs.home-manager.nixosModules.home-manager
     homeManagerConfig
-    {
-      inherit config;
-    } # Forward configuration
-    {
-      system.stateVersion = lib.mkForce systemVersion;
-    }
+    { inherit config; } # Forward configuration
+    { system.stateVersion = lib.mkForce systemVersion; }
     moduleArgs
   ];
 }

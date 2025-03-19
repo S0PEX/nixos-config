@@ -4,7 +4,7 @@
   # System-wide packages
   environment.systemPackages = with pkgs; [
     fuzzel # Dmenu replacement for launching apps
-    grim # Screenshot functionality 
+    grim # Screenshot functionality
     mako # Notification system (developed by SwayWM maintainer)
     nwg-displays # Manage displays for Sway
     nwg-look # GTK theme manager for Sway

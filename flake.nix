@@ -15,17 +15,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... } @inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
     let
       # NixOS system version - used to align nixpkgs and home-manager versions
       # Please keep in sync with the version passed to nixpkgs and home-manager URLs
+      system = "x86_64-linux";
       systemVersion = "24.11";
+
+      pkgs = import nixpkgs-unstable { inherit system; };
 
       mkSystem = import ./lib/mkSystem.nix {
         inherit nixpkgs nixpkgs-unstable systemVersion inputs;
       };
-    in
-    {
+    in {
       # Define NixOS configurations
       nixosConfigurations = {
         workstation = mkSystem "workstation" {
@@ -40,6 +42,15 @@
         vm = mkSystem "vm" {
           user = "s0pex"; # Specify the user for the configuration
         };
+      };
+
+      # Development environment
+      devShells.${system}.default = pkgs.mkShell {
+        packages = with pkgs; [
+          # Formatters
+          nixfmt
+          treefmt
+        ];
       };
     };
 }

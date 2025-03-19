@@ -1,8 +1,6 @@
 { config, pkgs, pkgs-unstable, ... }:
-let
-  sddm-astronaut = pkgs-unstable.sddm-astronaut;
-in
-{
+let sddm-astronaut = pkgs-unstable.sddm-astronaut;
+in {
   # Enable the X server
   services.xserver.enable = true;
 
@@ -11,7 +9,6 @@ in
     layout = "de"; # Set layout to German
     variant = ""; # Use the default variant
   };
-
 
   # Enable SDDM (Simple Desktop Display Manager) with Wayland support
   services.displayManager.sddm = {

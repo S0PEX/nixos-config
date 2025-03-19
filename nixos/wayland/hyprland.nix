@@ -15,10 +15,7 @@
       xdg-desktop-portal-wlr
       xdg-desktop-portal-hyprland
     ];
-    configPackages = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal
-    ];
+    configPackages = with pkgs; [ xdg-desktop-portal-gtk xdg-desktop-portal ];
     xdgOpenUsePortal = true;
   };
 
@@ -26,7 +23,7 @@
   environment.systemPackages = with pkgs; [
     swaynotificationcenter # Notification daemon
     hyprlock # Screen locker
-    grim # Screenshot functionality 
+    grim # Screenshot functionality
     swww # Wallpaper utility
     waybar # Status bar for Sway
     fuzzel # Dmenu replacement for launching apps
