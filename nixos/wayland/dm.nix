@@ -1,6 +1,13 @@
-{ config, pkgs, pkgs-unstable, ... }:
-let sddm-astronaut = pkgs-unstable.sddm-astronaut;
-in {
+{
+  config,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
+let
+  sddm-astronaut = pkgs-unstable.sddm-astronaut;
+in
+{
   # Enable the X server
   services.xserver.enable = true;
 

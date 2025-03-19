@@ -1,8 +1,15 @@
-{ config, pkgs, pkgs-unstable, lib, ... }:
+{
+  config,
+  pkgs,
+  pkgs-unstable,
+  lib,
+  ...
+}:
 
 {
   # System packages for Fish shell and related plugins
-  environment.systemPackages = with pkgs;
+  environment.systemPackages =
+    with pkgs;
     [
       firefox-bin
       librewolf
@@ -34,7 +41,8 @@
 
       # Network shares
       cifs-utils
-    ] ++ [ pkgs-unstable.ghostty ];
+    ]
+    ++ [ pkgs-unstable.ghostty ];
 
   # SSH Agent
   programs.ssh.startAgent = true;
@@ -45,14 +53,18 @@
   # Enable thunar plugins for archive and volume management
   programs.thunar = {
     enable = true;
-    plugins = with pkgs.xfce; [ thunar-volman thunar-archive-plugin ];
+    plugins = with pkgs.xfce; [
+      thunar-volman
+      thunar-archive-plugin
+    ];
   };
 
   # Enable GVFS: Mount, trash, and other functionalities
   services.gvfs.enable = true;
 
   # System fonts for various applications
-  fonts.packages = with pkgs;
+  fonts.packages =
+    with pkgs;
     [
       noto-fonts # General-purpose fonts
       noto-fonts-cjk-sans # CJK fonts (Chinese, Japanese, Korean)
@@ -62,7 +74,8 @@
       roboto-mono # Monospaced font (Roboto Mono)
       font-awesome # Icon font (Font Awesome)
       source-code-pro # Monospaced font (Source Code Pro)
-    ] ++ [ pkgs-unstable.nerd-fonts.jetbrains-mono ];
+    ]
+    ++ [ pkgs-unstable.nerd-fonts.jetbrains-mono ];
 
   # Enable Fish shell
   programs.fish.enable = true;

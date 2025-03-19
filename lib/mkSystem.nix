@@ -1,8 +1,17 @@
 # This function creates a NixOS system based on a setup for a particular architecture.
-{ nixpkgs, nixpkgs-unstable, systemVersion, inputs }:
+{
+  nixpkgs,
+  nixpkgs-unstable,
+  systemVersion,
+  inputs,
+}:
 
 name:
-{ system ? "x86_64-linux", user, config ? { } }:
+{
+  system ? "x86_64-linux",
+  user,
+  config ? { },
+}:
 
 let
   # Import the Nixpkgs library
@@ -46,7 +55,8 @@ let
       inherit (pkgConfig) pkgs-unstable;
     };
   };
-in lib.nixosSystem {
+in
+lib.nixosSystem {
   inherit (pkgConfig) pkgs;
 
   modules = [

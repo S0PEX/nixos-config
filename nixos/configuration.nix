@@ -12,7 +12,10 @@
   ];
 
   # Enable Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Enable garbage collection for configurations that are older than three days.
   nix.gc = {
