@@ -34,7 +34,10 @@
       python312
 
       lm_sensors # Hardware monitoring tool
+
+      # Audio utilities
       pulseaudio # PulseAudio sound server, we only use it for its ctl to interact with pipewire
+      pwvucontrol # Pipewire volume control
 
       # Multimedia utilities
       vlc

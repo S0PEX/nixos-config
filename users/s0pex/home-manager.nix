@@ -16,6 +16,7 @@
   home.packages = with pkgs-unstable; [
     # Browsers
     brave
+    microsoft-edge
 
     # Terminal additions
     oh-my-fish
