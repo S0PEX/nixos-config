@@ -17,5 +17,6 @@
     "nixos",
     "s0pex",
     "nvidia"
-  ]
+  ],
+  "nix.formatterPath": "nixfmt"
 }

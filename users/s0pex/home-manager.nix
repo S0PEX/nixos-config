@@ -27,6 +27,7 @@
     # Communications
     discord
     ferdium # Multi service chat client
+    mattermost-desktop
     thunderbird-bin
 
     # Multimedia
@@ -40,9 +41,13 @@
     texliveFull
 
     # Development tools
+    devenv
     gitkraken
     jetbrains.goland
     citrix_workspace
+
+    # Reverse engineering tools
+    ghidra-bin
 
     # Programming languages and runtimes
     go
