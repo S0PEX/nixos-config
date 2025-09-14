@@ -1,0 +1,17 @@
+repos:
+  - repo: local
+    hooks:
+      - id: nixfmt
+        name: Format Nix files with nixfmt
+        entry: nixfmt
+        language: system
+        types: [nix]
+
+      - id: statix
+        name: Lint Nix files with statix
+        entry: |
+          bash -c 'for file in "$@"; do
+            statix check "$file"
+          done' --
+        language: system
+        types: [nix]
