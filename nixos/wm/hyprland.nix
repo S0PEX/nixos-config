@@ -4,6 +4,9 @@
   # Enable Hyprland
   programs.hyprland = {
     enable = true;
+
+    # Use UWSM to handle systemd targets such as wayland-session and graphical-session
+    withUWSM = true;
   };
 
   # Add default packages
