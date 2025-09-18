@@ -20,6 +20,11 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Network configuration
+  networking.nameservers = [
+    "1.1.1.1" # Cloudflare DNS
+  ];
+
   # Enable garbage collection for configurations that are older than three days.
   programs.nh = {
     enable = true;
