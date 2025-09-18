@@ -19,8 +19,9 @@
     # Communication
     thunderbird-bin
 
-    # Misc
+    # System utilities
     unzip
+    bind # DNS utilities
     nautilus
   ];
 }
