@@ -11,6 +11,7 @@ repos:
         name: Lint Nix files with statix
         entry: |
           bash -c 'for file in "$@"; do
+            echo "Running statix on $file"
             statix check "$file"
           done' --
         language: system

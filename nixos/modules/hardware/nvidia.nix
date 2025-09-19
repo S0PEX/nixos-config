@@ -5,13 +5,15 @@
   ...
 }:
 
+let
+  cfg = config.hardware.nvidia-driver;
+in
 {
-  # Create option to conditionally enable this module
-  options.hardware.nvidia = {
-    enable = lib.mkEnableOption "nvidia driver";
+  options.hardware.nvidia-driver = {
+    enable = lib.mkEnableOption "Enable the NVIDIA driver";
   };
 
-  config = lib.mkIf config.hardware.nvidia.enable {
+  config = lib.mkIf cfg.enable {
     # Enable graphics
     hardware.graphics.enable = true;
 

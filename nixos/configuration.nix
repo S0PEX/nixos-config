@@ -6,9 +6,9 @@
 
 {
   imports = [
-    ./wm/default.nix
-    ./pkgs/default.nix
     ./modules/default.nix
+    ./pkgs/default.nix
+    ./wm/default.nix
   ];
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
@@ -19,24 +19,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # Network configuration
-  networking.nameservers = [
-    "1.1.1.1" # Cloudflare DNS
-  ];
-
-  # Enable garbage collection for configurations that are older than three days.
-  programs.nh = {
-    enable = true;
-    clean = {
-      enable = true;
-      dates = "weekly";
-      extraArgs = "--keep-since 3d --keep 2";
-    };
-  };
-
-  # Enable periodic optimisation of the nix store
-  nix.optimise.automatic = true;
 
   # Set time zone.
   time.timeZone = "Europe/Berlin";

@@ -12,6 +12,9 @@
 
   # Packages
   home.packages = with pkgs; [
+    # Dotfiles
+    chezmoi
+
     # Development tools
     direnv
     vscode
@@ -35,17 +38,16 @@
     # Security
     # eddie
     veracrypt
-
-    # Other
-    ghostty
   ];
 
-  # Terminal extensions
-  programs.fish.enable = true;
-  programs.starship.enable = true;
-  programs.zoxide = {
-    enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
+  programs = {
+    # Terminal extensions
+    fish.enable = true;
+    starship.enable = true;
+    zoxide = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+    };
   };
 }
