@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 {
   imports = [
     ./dm.nix

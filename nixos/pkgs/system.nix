@@ -3,14 +3,6 @@
 {
   # Packages installed in system profile
   environment.systemPackages = with pkgs; [
-    # Dotfiles
-    git
-    vim
-    chezmoi
-
-    # VPN
-    openvpn3
-
     # Browsers
     librewolf
     firefox-bin
@@ -20,8 +12,11 @@
     thunderbird-bin
 
     # System utilities
+    git
+    vim
+    bind
     unzip
-    bind # DNS utilities
+    ghostty
     nautilus
   ];
 }

@@ -14,7 +14,7 @@ in
     description = "Kanshi - Dynamic display configuration";
 
     after = [ systemdTarget ];
-    bindsTo = [ systemdTarget ];
+    partOf = [ systemdTarget ];
     wantedBy = [ systemdTarget ];
 
     unitConfig = {

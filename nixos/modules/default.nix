@@ -1,11 +1,9 @@
-{ config, pkgs, ... }:
-
 {
   imports = [
-    ./fonts.nix
-    ./kanshi.nix
-    ./nvidia.nix
-    ./services.nix
-    ./virtualisation.nix
+    ./config/default.nix
+    ./hardware/default.nix
+    ./programs/default.nix
+    ./services/default.nix
+    ./virtualisation/default.nix
   ];
 }
