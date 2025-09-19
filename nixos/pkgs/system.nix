@@ -21,5 +21,6 @@
     unzip
     ghostty
     nautilus
+    coreutils
   ];
 }
