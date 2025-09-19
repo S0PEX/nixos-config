@@ -3,7 +3,7 @@
 }:
 
 pkgs.mkShell {
-  name = "dev-shell";
+  name = "nixos-dev-shell";
 
   buildInputs = with pkgs; [
     statix
