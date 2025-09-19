@@ -15,6 +15,9 @@
     # Dotfiles
     chezmoi
 
+    # Themes
+    nordic
+
     # Development tools
     direnv
     vscode
@@ -36,7 +39,6 @@
     element-desktop
 
     # Security
-    # eddie
     veracrypt
   ];
 

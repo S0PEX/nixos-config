@@ -14,6 +14,7 @@
     kitty
     fuzzel
     hyprpanel
+    nwg-look
     nwg-displays
   ];
 
