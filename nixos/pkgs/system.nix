@@ -8,6 +8,9 @@
     firefox-bin
     microsoft-edge
 
+    # Office
+    libreoffice-fresh
+
     # Communication
     thunderbird-bin
 
