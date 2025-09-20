@@ -12,12 +12,7 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
+    inputs:
     let
       # NixOS system version - used to align nixpkgs and home-manager versions
       # Please keep in sync with the version passed to nixpkgs and home-manager URLs
@@ -27,8 +22,6 @@
       mkSystem = import ./lib/mkSystem.nix {
         inherit
           inputs
-          nixpkgs
-          home-manager
           systemVersion
           ;
       };

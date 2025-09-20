@@ -1,5 +1,3 @@
-{ systemVersion, ... }:
-
 {
   config,
   pkgs,
@@ -7,9 +5,6 @@
 }:
 
 {
-  # Home-manager requires this be explicitly set
-  home.stateVersion = systemVersion;
-
   # Packages
   home.packages = with pkgs; [
     # Dotfiles
