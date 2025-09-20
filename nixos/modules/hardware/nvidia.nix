@@ -10,7 +10,7 @@ let
 in
 {
   options.hardware.nvidia-driver = {
-    enable = lib.mkEnableOption "Enable the NVIDIA driver";
+    enable = lib.mkEnableOption "the NVIDIA driver";
   };
 
   config = lib.mkIf cfg.enable {
