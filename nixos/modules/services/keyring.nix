@@ -6,7 +6,6 @@
     gnome = {
       gnome-keyring.enable = true;
     };
-    passSecretService.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -19,6 +18,7 @@
     pam = {
       services = {
         sddm.enableGnomeKeyring = true;
+        sddm-greeter.enableGnomeKeyring = true;
       };
     };
   };
