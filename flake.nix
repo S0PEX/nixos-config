@@ -1,12 +1,12 @@
 {
-  description = "A simple NixOS flake";
+  description = "General Purpose NixOS System Configuration";
 
   inputs = {
     # NixOS official package source
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05?shallow=1";
     home-manager = {
       # Follow corresponding `release` branch from Home Manager
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.05?shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

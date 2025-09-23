@@ -22,5 +22,6 @@
     ghostty
     nautilus
     coreutils
+    gnome-text-editor
   ];
 }

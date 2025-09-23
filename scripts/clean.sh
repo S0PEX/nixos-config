@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-# Clean up the Nix store and optimise it
-sudo nh clean all
+sudo nh clean all --keep-since 3d --keep 2
 sudo nix-store --optimise
