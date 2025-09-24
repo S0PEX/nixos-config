@@ -13,6 +13,8 @@
   environment.systemPackages = with pkgs; [
     kitty
     fuzzel
+    hypridle
+    hyprlock
     hyprpanel
     nwg-look
     nwg-displays
