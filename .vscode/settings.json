@@ -1,12 +1,13 @@
 {
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
-    "direnv.restart.automatic": true,
-    "conventionalCommits.scopes": [
-        "lib",
-        "nixos",
-        "scripts",
-        "users",
-        "flake"
-    ]
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "direnv.restart.automatic": true,
+  "conventionalCommits.scopes": [
+    "lib",
+    "nixos",
+    "scripts",
+    "users",
+    "flake",
+    "s0pex"
+  ]
 }

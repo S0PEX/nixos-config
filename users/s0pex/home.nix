@@ -1,9 +1,18 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 
+let
+  # Java SDKs
+  jdksPath = ".jdks"; # IntelliJ's default path for Java SDKs
+  additionalJDKs = with pkgs; [
+    jdk11
+    jdk21
+  ];
+in
 {
   # Packages
   home.packages = with pkgs; [
@@ -20,13 +29,13 @@
     gitkraken
     citrix_workspace
     jetbrains.goland
+    jetbrains.datagrip
     jetbrains.idea-ultimate
 
     # Language runtimes and SDKs
     go
     bun
     nodejs_22
-    jdk21
 
     # Communications
     discord
@@ -36,6 +45,15 @@
     # Security
     veracrypt
   ];
+
+  # Java SDKs
+  home.sessionPath = [ "$HOME/${jdksPath}" ];
+  home.file = lib.listToAttrs (
+    map (jdk: {
+      name = "${jdksPath}/${jdk.version}";
+      value.source = "${jdk}/lib/openjdk";
+    }) additionalJDKs
+  );
 
   programs = {
     # Terminal extensions

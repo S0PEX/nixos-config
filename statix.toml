@@ -1,1 +1,4 @@
 ignore = ['hardware']
+disabled = [
+    "repeated_keys", # Disabled to preserve separate key access patterns like 'programs.' and 'home.' for better readability
+]
