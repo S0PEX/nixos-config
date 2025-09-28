@@ -3,36 +3,48 @@
   systemVersion,
 }:
 
-systemName:
-{ user }:
+{
+  system,
+  systemName,
+  user,
+}:
 
 let
-  inherit (inputs) nixpkgs home-manager;
-  inherit (nixpkgs) lib;
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    inherit system;
+    config.allowUnfree = true;
+  };
+
+  inherit (inputs.nixpkgs) lib;
+  nixosSystem = lib.nixosSystem;
+  home-manager = inputs.home-manager.nixosModules;
 in
-lib.nixosSystem {
+nixosSystem {
   modules = [
+    # Core system configuration
     ../hardware/${systemName}/configuration.nix
     ../nixos/configuration.nix
     ../users/${user}/nixos.nix
 
-    { networking.hostName = lib.mkForce systemName; }
+    # System-specific settings
+    {
+      networking.hostName = lib.mkForce systemName;
+    }
 
-    home-manager.nixosModules.home-manager
+    # Home Manager integration
+    home-manager.home-manager
     {
       home-manager = {
-        users.${user} = {
-          imports = [
-            ../users/${user}/home.nix
-          ];
-
-          # Ensure home.stateVersion is set to systemVersion
-          home.stateVersion = lib.mkForce systemVersion;
-        };
-
-        # Home-manager options
         useGlobalPkgs = true;
         useUserPackages = true;
+        extraSpecialArgs = {
+          inherit pkgs-unstable;
+        };
+
+        users.${user} = {
+          imports = [ ../users/${user}/home.nix ];
+          home.stateVersion = lib.mkForce systemVersion;
+        };
       };
     }
   ];

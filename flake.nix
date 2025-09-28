@@ -2,8 +2,11 @@
   description = "General Purpose NixOS System Configuration";
 
   inputs = {
-    # NixOS official package source
+    # NixOS official package sources
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05?shallow=1";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable?shallow=1";
+
+    # Home Manager for user-specific configurations
     home-manager = {
       # Follow corresponding `release` branch from Home Manager
       url = "github:nix-community/home-manager/release-25.05?shallow=1";
@@ -20,15 +23,14 @@
 
       # Helper method to create nixosSystem with given system name and user
       mkSystem = import ./lib/mkSystem.nix {
-        inherit
-          inputs
-          systemVersion
-          ;
+        inherit inputs systemVersion;
       };
     in
     {
-      nixosConfigurations.um790 = mkSystem "um790" {
+      nixosConfigurations.um790 = mkSystem {
         user = "s0pex";
+        system = "x86_64-linux";
+        systemName = "um790";
       };
     };
 }
