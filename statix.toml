@@ -1,4 +1,6 @@
-ignore = ['hardware']
+ignore = [
+    'hardware',
+] # Don't lint hardware-configuration.nix etc. as they are automatically generated and don't follow normal conventions
 disabled = [
     "repeated_keys", # Disabled to preserve separate key access patterns like 'programs.' and 'home.' for better readability
 ]

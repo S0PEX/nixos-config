@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   lib,
   ...
 }:
@@ -15,7 +16,7 @@ let
 in
 {
   # Packages
-  home.packages = with pkgs; [
+  home.packages = with pkgs-unstable; [
     # Dotfiles
     chezmoi
 
@@ -27,7 +28,7 @@ in
     vscode
     insomnia
     gitkraken
-    citrix_workspace
+    # citrix_workspace
     jetbrains.goland
     jetbrains.datagrip
     jetbrains.idea-ultimate
