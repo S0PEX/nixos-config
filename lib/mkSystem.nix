@@ -16,7 +16,7 @@ let
   };
 
   inherit (inputs.nixpkgs) lib;
-  nixosSystem = lib.nixosSystem;
+  inherit (lib) nixosSystem;
   home-manager = inputs.home-manager.nixosModules;
 in
 nixosSystem {

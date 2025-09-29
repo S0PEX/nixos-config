@@ -1,52 +1,74 @@
-# NixOS Flakes Personal Configuration
+# NixOS Flake Configuration
 
-This repository contains my personal configuration for NixOS, using the Nix Flakes feature.
+This repository contains my personal, reproducible NixOS configuration using the Nix Flakes system.
 
-## Initial Setup
+## Getting Started
 
-To get started with this configuration on a NixOS system, follow these steps:
+1. **Clone the repository:**
 
-1. Clone this repository to a folder of your choice, e.g., `~/nixos-config`:
-
-   ```bash
+   ```shell
    $ git clone https://github.com/S0PEX/nixos-config.git ~/nixos-config
-   ```
-
-2. Enable experimental Nix features, such as nix-command and flakes, by adding the following to your NixOS configuration:
-   ```nix
-   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-   ```
-   Now you're ready to use Flakes to manage your NixOS setup!
-
-## Usage
-
-1. `cd` into the cloned `nixos-config` folder (e.g.):
-
-   ```bash
+   Cloning into 'nixos-config'...
+   remote: Enumerating objects: 189, done.
+   remote: Counting objects: 100% (189/189), done.
+   remote: Compressing objects: 100% (104/104), done.
+   remote: Total 189 (delta 75), reused 178 (delta 64), pack-reused 0 (from 0)
+   Receiving objects: 100% (189/189), 25.54 KiB | 6.38 MiB/s, done.
+   Resolving deltas: 100% (75/75), done.
    $ cd ~/nixos-config
    ```
 
-2. Copy the default configuration and hardware configuration of your current build to the `/hardware/{systemName}` directory:
+2. **Enable Flakes and nix-command:**
 
-   ```bash
-   $ sudo cp /etc/nixos/ ./hardware/{systemName}
-   ```
-
-   **Warning**: Make sure to rename your `hardware-configuration.nix` to something meaningful and update the `flake.nix` configuration accordingly.
-
-   For example:
+   Add this to your NixOS configuration (e.g., `/etc/nixos/configuration.nix`):
 
    ```nix
-   # Define NixOS configurations
-   # Usage of mkSystem: mkSystem "name of the hardware configuration file under hardware/"
-   nixosConfigurations.nixos = mkSystem "${systemName}" {  # Binds hardware/${systemName}/ to this configuration
-     user = "s0pex";  # Specifies the user for the configuration; this option is used to load the configs from users/${user}
+   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+   ```
+
+   Then rebuild:
+
+   ```shell
+   $ sudo nixos-rebuild switch
+   setting up /etc...
+   ```
+
+## Hardware Configuration
+
+1. **Copy your hardware config:**
+
+   ```bash
+   # PWD is ~/nixos-config
+   $ mkdir -p ./hardware/{systemName}/
+   $ cp -r /etc/nixos/* ./hardware/{systemName}/
+   ```
+
+2. **Create system entry in `flake.nix`:**
+
+   ```nix
+   nixosConfigurations.{systemName} = mkSystem {
+      user = "{username}";         # Username of the home manager config under users/{username}/
+      systemName = "{systemName}"; # Must match your hardware folder name, e.g., ./hardware/{systemName}
    };
    ```
 
-3. To apply the configuration, run the following commands:
+   Replace `{systemName}` with your actual system name and `{username}` with your actual username.  
+   **Important:** The value of `systemName` in your flake must exactly match the directory name under `./hardware/{systemName}/`.
+
+## Applying the Configuration
+
+1. **Apply with the provided script:**
+
    ```bash
-   $ sudo nixos-rebuild switch --flake .
+   ./scripts/apply.sh
    ```
-   
-   **Warning**: Currently, this configuration assumes that your host is called `nixos`. If your system's hostname is different, make sure to specify `nixos` when running the flake commands or adjust the configuration accordingly.
+
+   Or manually:
+
+   ```bash
+   sudo nixos-rebuild switch --flake .#{systemName}
+   ```
+
+---
+
+For more details on NixOS flakes, see the [official documentation](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake.html).
