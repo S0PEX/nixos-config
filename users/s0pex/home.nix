@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgs-unstable,
   lib,
   ...
 }:
@@ -9,47 +8,44 @@
 let
   # Java SDKs
   jdksPath = ".jdks"; # IntelliJ's default path for Java SDKs
-  additionalJDKs = with pkgs-unstable; [
+  additionalJDKs = with pkgs; [
     jdk11
     jdk21
   ];
 in
 {
   # Packages
-  home.packages =
-    with pkgs-unstable;
-    [
-      # Dotfiles
-      chezmoi
+  home.packages = with pkgs; [
+    # Dotfiles
+    chezmoi
 
-      # Themes
-      nordic
+    # Themes
+    nordic
 
-      # Development tools
-      direnv
-      vscode
-      insomnia
-      gitkraken
-      jetbrains.goland
-      jetbrains.datagrip
-      jetbrains.idea-ultimate
+    # Development tools
+    bruno
+    vscode
+    insomnia
+    gitkraken
+    jetbrains.goland
+    jetbrains.datagrip
+    jetbrains.idea-ultimate
 
-      # Language runtimes and SDKs
-      go
-      bun
-      nodejs_22
+    # Language runtimes and SDKs
+    go
+    bun
+    gcc
+    nodejs_22
 
-      # Communications
-      discord
-      ferdium
-      element-desktop
+    # Communications
+    discord
+    ferdium
+    element-desktop
 
-      # Security
-      veracrypt
-    ]
-    ++ (with pkgs; [
-      citrix_workspace # Uses deprecated library and thus needs to be installed from stable
-    ]);
+    # Others
+    gimp3
+    # citrix_workspace
+  ];
 
   # Java SDKs
   home.sessionPath = [ "$HOME/${jdksPath}" ];
@@ -60,8 +56,13 @@ in
     }) additionalJDKs
   );
 
+  # Shell
   programs = {
-    # Terminal extensions
+    direnv = {
+      enable = true;
+      silent = true; # Disable prologue message in shell
+      nix-direnv.enable = true;
+    };
     fish.enable = true;
     starship.enable = true;
     zoxide = {
