@@ -3,13 +3,11 @@
 
   inputs = {
     # NixOS official package sources
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05?shallow=1";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable?shallow=1";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable?shallow=1";
 
     # Home Manager for user-specific configurations
     home-manager = {
-      # Follow corresponding `release` branch from Home Manager
-      url = "github:nix-community/home-manager/release-25.05?shallow=1";
+      url = "github:nix-community/home-manager/master?shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -19,7 +17,7 @@
     let
       # NixOS system version - used to align nixpkgs and home-manager versions
       # Please keep in sync with the version passed to nixpkgs and home-manager URLs
-      systemVersion = "25.05";
+      systemVersion = "25.11";
 
       # Helper method to create nixosSystem with given system name and user
       mkSystem = import ./lib/mkSystem.nix {
