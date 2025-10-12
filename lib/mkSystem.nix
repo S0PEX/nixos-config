@@ -10,11 +10,6 @@
 }:
 
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable {
-    inherit system;
-    config.allowUnfree = true;
-  };
-
   inherit (inputs.nixpkgs) lib;
   inherit (lib) nixosSystem;
   home-manager = inputs.home-manager.nixosModules;
@@ -37,9 +32,7 @@ nixosSystem {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {
-          inherit pkgs-unstable;
-        };
+        extraSpecialArgs = { };
 
         users.${user} = {
           imports = [ ../users/${user}/home.nix ];
