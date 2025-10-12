@@ -11,13 +11,22 @@
 
   # Add default packages
   environment.systemPackages = with pkgs; [
-    kitty
-    fuzzel
+    # Hyprland and dependencies
     hypridle
     hyprlock
     hyprpanel
+
+    # Wayland utilities
+    kitty
+    fuzzel
     nwg-look
     nwg-displays
+    wl-clipboard
+
+    # Screenshot tool
+    grim
+    slurp
+    swappy
   ];
 
   # Set session variables
