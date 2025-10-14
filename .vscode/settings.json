@@ -10,6 +10,7 @@
     "scripts",
     "users",
     "s0pex",
-    "flake"
+    "flake",
+    "vscode"
   ]
 }

@@ -1,0 +1,58 @@
+# GitHub Copilot Commit Message Instructions
+
+These instructions help GitHub Copilot generate commit messages for this NixOS project using **Conventional Commits**.
+
+---
+
+## General Guidelines
+
+1. **Use Conventional Commit format:** `<type>(<scope>): <short description>`
+   Where:
+   - `type` is one of: `feat`, `fix`, `chore`, `docs`, `refactor`, `perf`, `test`.
+   - `scope` is derived from the folder affected (see below).
+   - `short description` is concise, imperative, and lowercase (except proper nouns/packages).
+2. **Always be specific about what was added, removed, or changed.**
+3. **List multiple items in a commit message if they belong to the same folder or scope**, separated by commas.
+
+---
+
+## Scope Mapping
+
+**Example:**
+
+- Changed files inside `desktop`: scope = `desktop`
+- Changed files inside `pkgs`: scope = `pkgs`
+
+**Rules for scopes:**
+
+- Use the scope that matches the folder containing the changed files.
+- If multiple folders are affected, generate separate commit messages per scope.
+- Scope names should match exactly what is in `.vscode/settings.json` to keep commits consistent.
+
+---
+
+## Commit Types and Examples
+
+| Change                                        | Type     | Example                                                                  |
+| --------------------------------------------- | -------- | ------------------------------------------------------------------------ |
+| Adding window manager related system packages | feat     | `feat(desktop): add Swappy, Grim, and Slurp to Hyprland system packages` |
+| Adding general system package                 | feat     | `feat(pkgs): add gnome-text-editor to system packages`                   |
+| Adding user package                           | feat     | `feat(s0pex): add obs-studio to home packages`                           |
+| Removing system packages                      | feat     | `feat(pkgs): remove gnome-calculator from system packages`               |
+| Updating system packages                      | feat     | `feat(desktop): update Waybar to version 1.8.0`                          |
+| Dropping a feature / package                  | feat     | `feat(desktop): remove old Hyprland widget support`                      |
+| Bug fixes / misconfigurations                 | fix      | `fix(desktop): correct Hyprland config for Swappy integration`           |
+| Documentation changes                         | docs     | `docs(modules): update README with new desktop modules`                  |
+| Refactoring / internal changes                | refactor | `refactor(pkgs): reorganize system package definitions`                  |
+| Non-system housekeeping                       | chore    | `chore: clean up CI scripts`                                             |
+
+---
+
+## Additional Guidelines
+
+- Use imperative mood: "add", "remove", "update", "fix", "bump", "refactor".
+- Include the package or feature names explicitly when possible.
+- Avoid generic messages like "update stuff" or "fix things".
+- For multiple folders in one commit, generate separate commits if possible.
+
+---
