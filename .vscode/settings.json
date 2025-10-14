@@ -5,9 +5,11 @@
   "conventionalCommits.scopes": [
     "lib",
     "nixos",
+    "desktop",
+    "pkgs",
     "scripts",
     "users",
-    "flake",
-    "s0pex"
+    "s0pex",
+    "flake"
   ]
 }

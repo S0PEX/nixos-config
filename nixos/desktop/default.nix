@@ -1,6 +1,6 @@
 {
   imports = [
-    ./dm.nix
+    ./sddm.nix
     ./hyprland.nix
   ];
 }

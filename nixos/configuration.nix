@@ -6,9 +6,9 @@
 
 {
   imports = [
+    ./desktop/default.nix
     ./modules/default.nix
     ./pkgs/default.nix
-    ./wm/default.nix
   ];
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
