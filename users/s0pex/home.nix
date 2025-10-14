@@ -44,7 +44,9 @@ in
 
     # Others
     gimp3
-    # citrix_workspace
+    obs-studio
+    texliveFull
+    citrix_workspace
   ];
 
   # Java SDKs
