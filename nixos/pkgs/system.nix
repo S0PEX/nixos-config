@@ -14,6 +14,9 @@
     # Communication
     thunderbird-bin
 
+    # Media
+    vlc
+
     # System utilities
     git
     vim
