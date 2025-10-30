@@ -12,6 +12,10 @@
 let
   inherit (inputs.nixpkgs) lib;
   inherit (lib) nixosSystem;
+  pkgs-stable = import inputs.nixpkgs-stable {
+    inherit system;
+    config.allowUnfree = true;
+  };
   home-manager = inputs.home-manager.nixosModules;
 in
 nixosSystem {
@@ -32,7 +36,9 @@ nixosSystem {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = { };
+        extraSpecialArgs = {
+          inherit pkgs-stable;
+        };
 
         users.${user} = {
           imports = [ ../users/${user}/home.nix ];
