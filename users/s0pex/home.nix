@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-stable,
   lib,
   ...
 }:
@@ -15,39 +16,50 @@ let
 in
 {
   # Packages
-  home.packages = with pkgs; [
-    # Dotfiles
-    chezmoi
+  home.packages =
+    with pkgs;
+    [
+      # Dotfiles
+      chezmoi
 
-    # Themes
-    nordic
+      # Themes
+      nordic
 
-    # Development tools
-    bruno
-    vscode
-    insomnia
-    gitkraken
-    jetbrains.goland
-    jetbrains.datagrip
-    jetbrains.idea-ultimate
+      # Development tools
+      bruno
+      vscode
+      kubectl
+      insomnia
+      minikube
+      gitkraken
+      jetbrains.goland
+      jetbrains.datagrip
+      jetbrains.idea-ultimate
 
-    # Language runtimes and SDKs
-    go
-    bun
-    gcc
-    nodejs_22
+      # Language runtimes and SDKs
+      go
+      bun
+      gcc
+      nodejs_22
 
-    # Communications
-    discord
-    ferdium
-    element-desktop
+      # Communications
+      discord
+      ferdium
+      element-desktop
 
-    # Others
-    gimp3
-    obs-studio
-    texliveFull
-    citrix_workspace
-  ];
+      # Writing
+      zotero
+      texliveFull
+
+      # Others
+      gimp3
+      obs-studio
+      mattermost-desktop
+      # citrix_workspace
+    ]
+    ++ [
+      pkgs-stable.citrix_workspace
+    ];
 
   # Java SDKs
   home.sessionPath = [ "$HOME/${jdksPath}" ];
@@ -72,5 +84,8 @@ in
       enableBashIntegration = true;
       enableFishIntegration = true;
     };
+
+    # K8s monitoring
+    k9s.enable = true;
   };
 }
