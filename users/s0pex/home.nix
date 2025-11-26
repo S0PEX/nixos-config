@@ -11,6 +11,7 @@ let
   jdksPath = ".jdks"; # IntelliJ's default path for Java SDKs
   additionalJDKs = with pkgs; [
     jdk11
+    jdk17
     jdk21
   ];
 in
@@ -49,13 +50,12 @@ in
 
       # Writing
       zotero
-      texliveFull
+      # texliveFull
 
       # Others
       gimp3
       obs-studio
       mattermost-desktop
-      # citrix_workspace
     ]
     ++ [
       pkgs-stable.citrix_workspace
