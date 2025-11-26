@@ -4,8 +4,9 @@
   # Packages installed in system profile
   environment.systemPackages = with pkgs; [
     # Browsers
-    librewolf
+    brave
     firefox-bin
+    librewolf-bin
     microsoft-edge
 
     # Office
@@ -23,8 +24,12 @@
     bind
     unzip
     ghostty
+    python3
     nautilus
     coreutils
     gnome-text-editor
+
+    # Formatting tools
+    nixfmt-rfc-style
   ];
 }
