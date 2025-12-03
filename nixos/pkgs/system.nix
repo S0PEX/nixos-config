@@ -10,6 +10,8 @@
     microsoft-edge
 
     # Office
+    sioyek
+    papers
     libreoffice-fresh
 
     # Communication

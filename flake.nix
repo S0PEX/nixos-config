@@ -8,7 +8,7 @@
 
     # Home Manager for user-specific configurations
     home-manager = {
-      url = "github:nix-community/home-manager/master?shallow=1";
+      url = "github:nix-community/home-manager/release-25.11?shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
