@@ -1,12 +1,12 @@
 {
   inputs,
-  systemVersion,
 }:
 
 {
+  user,
   system,
   systemName,
-  user,
+  systemVersion,
 }:
 
 let
