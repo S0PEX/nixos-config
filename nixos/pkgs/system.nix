@@ -6,12 +6,12 @@
     # Browsers
     brave
     firefox-bin
-    librewolf-bin
     microsoft-edge
 
     # Office
     sioyek
     papers
+    pdfarranger
     libreoffice-fresh
 
     # Communication
@@ -21,6 +21,7 @@
     vlc
 
     # System utilities
+    jq
     git
     vim
     bind
