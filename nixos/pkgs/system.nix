@@ -33,6 +33,6 @@
     gnome-text-editor
 
     # Formatting tools
-    nixfmt-rfc-style
+    nixfmt
   ];
 }

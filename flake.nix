@@ -37,8 +37,8 @@
         systemVersion = "25.05";
       };
 
-      # Expose nixfmt-rfc-style for 'nix fmt'
-      formatter.${system} = pkgs.nixfmt-rfc-style;
+      # Expose nixfmt for 'nix fmt'
+      formatter.${system} = pkgs.nixfmt;
 
       # Development shell for NixOS configuration repository
       devShells.${system}.default = pkgs.mkShellNoCC {
@@ -53,7 +53,7 @@
           statix
           treefmt
           pre-commit
-          nixfmt-rfc-style
+          nixfmt
         ];
       };
     };
