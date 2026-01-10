@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  systemdTarget = "wayland-session@Hyprland.target";
+  systemdTarget = "graphical-session.target";
 in
 {
   # Ensure kanshi is installed system-wide
