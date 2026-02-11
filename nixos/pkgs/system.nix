@@ -6,7 +6,6 @@
     # Browsers
     brave
     firefox-bin
-    microsoft-edge
 
     # Office
     sioyek
@@ -21,7 +20,6 @@
     vlc
 
     # System utilities
-    jq
     git
     vim
     bind
@@ -31,8 +29,5 @@
     nautilus
     coreutils
     gnome-text-editor
-
-    # Formatting tools
-    nixfmt
   ];
 }
