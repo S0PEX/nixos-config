@@ -23,11 +23,21 @@
     git
     vim
     bind
+    htop
+    ncdu
     unzip
+    peazip
     ghostty
+    ripgrep
+    killall
     python3
     nautilus
     coreutils
+    file-roller
     gnome-text-editor
+
+    # NixOS related
+    nixfmt
+    nix-sweep
   ];
 }
