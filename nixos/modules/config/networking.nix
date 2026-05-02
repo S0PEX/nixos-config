@@ -7,4 +7,7 @@
     "8.8.8.8" # Google
     "8.8.4.4" # Google
   ];
+
+  # Allow traffic on bridge interfaces (e.g., for Docker containers) to access the host
+  networking.firewall.trustedInterfaces = [ "br+" ];
 }
