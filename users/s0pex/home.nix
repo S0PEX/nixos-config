@@ -13,53 +13,53 @@ let
     jdk11
     jdk17
     jdk21
+    jdk25
   ];
 in
 {
   # Packages
-  home.packages =
-    with pkgs;
-    [
-      # Dotfiles
-      chezmoi
+  home.packages = with pkgs; [
+    # VPN
+    eddie
 
-      # Themes
-      nordic
+    # Dotfiles
+    chezmoi
 
-      # Development tools
-      bruno
-      vscode
-      kubectl
-      insomnia
-      minikube
-      gitkraken
-      jetbrains.goland
-      jetbrains.datagrip
-      jetbrains.idea-ultimate
+    # Browsers
+    microsoft-edge
+    mullvad-browser
 
-      # Language runtimes and SDKs
-      go
-      bun
-      gcc
-      nodejs_22
+    # Themes
+    nordic
 
-      # Communications
-      discord
-      ferdium
-      element-desktop
+    # Development tools
+    bruno
+    devenv
+    vscode
+    rpi-imager
+    gitkraken
 
-      # Writing
-      zotero
-      # texliveFull
+    jetbrains.idea
+    jetbrains.datagrip
+    jetbrains.phpstorm
+    # jetbrains.clion
 
-      # Others
-      gimp3
-      obs-studio
-      mattermost-desktop
-    ]
-    ++ [
-      pkgs-stable.citrix_workspace
-    ];
+    # Language runtimes and SDKs
+    gcc
+    nodejs_24
+
+    # Communications
+    discord
+    ferdium
+
+    # Writing
+    zotero
+    diffpdf
+
+    # Others
+    gimp
+    obs-studio
+  ];
 
   # Java SDKs
   home.sessionPath = [ "$HOME/${jdksPath}" ];
