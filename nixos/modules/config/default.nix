@@ -1,7 +1,7 @@
 {
   imports = [
     ./gc.nix
-    ./kernel.nix
+    ./sysctl.nix
     ./networking.nix
   ];
 }
