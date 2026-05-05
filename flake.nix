@@ -11,50 +11,51 @@
       url = "github:nix-community/home-manager/master?shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    import-tree.url = "github:vic/import-tree";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      ...
-    }@inputs:
+    inputs@{ flake-parts, import-tree, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
-
-      # Helper method to create nixosSystem with given system name and user
       mkSystem = import ./lib/mkSystem.nix {
         inherit inputs;
       };
     in
-    {
-      # UM790 NixOS configuration
-      nixosConfigurations.um790 = mkSystem {
-        user = "s0pex";
-        inherit system;
-        systemName = "um790";
-        systemVersion = "25.05";
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        inputs.home-manager.flakeModules.home-manager
+      ];
+      flake = {
+        nixosConfigurations.um790 = mkSystem {
+          user = "s0pex";
+          system = "x86_64-linux";
+          systemName = "um790";
+          systemVersion = "25.05";
+        };
       };
+      systems = [ "x86_64-linux" ];
+      perSystem =
+        { pkgs, system, ... }:
+        {
+          formatter = pkgs.nixfmt;
 
-      # Expose nixfmt for 'nix fmt'
-      formatter.${system} = pkgs.nixfmt;
+          devShells.default = pkgs.mkShellNoCC {
+            name = "nixos-dev-shell";
 
-      # Development shell for NixOS configuration repository
-      devShells.${system}.default = pkgs.mkShellNoCC {
-        name = "nixos-dev-shell";
+            shellHook = ''
+              ${pkgs.pre-commit}/bin/pre-commit install
+            '';
 
-        # Pre-commit hooks ensure code quality before distributed version control
-        shellHook = ''
-          ${pkgs.pre-commit}/bin/pre-commit install
-        '';
-
-        packages = with pkgs; [
-          statix
-          treefmt
-          pre-commit
-          nixfmt
-        ];
-      };
+            packages = with pkgs; [
+              statix
+              treefmt
+              pre-commit
+              nixfmt
+            ];
+          };
+        };
     };
 }

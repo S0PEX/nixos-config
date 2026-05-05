@@ -12,6 +12,7 @@
 let
   inherit (inputs.nixpkgs) lib;
   inherit (lib) nixosSystem;
+  inherit (inputs) import-tree flake-parts;
   pkgs-stable = import inputs.nixpkgs-stable {
     inherit system;
     config.allowUnfree = true;
@@ -20,12 +21,14 @@ let
 in
 nixosSystem {
   modules = [
-    # Core system configuration
-    ../hardware/${systemName}/configuration.nix
-    ../nixos/configuration.nix
-    ../users/${user}/nixos.nix
+    # Base configuration
+    (import-tree ../nixos)
 
-    # System-specific settings
+    # System-specific configuration
+    ../users/${user}/nixos.nix
+    (import-tree ../hardware/${systemName})
+
+    # Force the hostname to match the system name
     {
       networking.hostName = lib.mkForce systemName;
     }
