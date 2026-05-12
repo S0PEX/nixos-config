@@ -18,6 +18,7 @@
 
     # Media
     vlc
+    qimgv
 
     # System utilities
     git
