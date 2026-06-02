@@ -12,9 +12,10 @@
   # Add default packages
   environment.systemPackages = with pkgs; [
     # Hyprland and dependencies
+    awww # Wallpaper engine
+    wayle # hyprpanel sucessor
     hypridle
     hyprlock
-    hyprpanel
 
     # Wayland utilities
     kitty
@@ -27,6 +28,8 @@
     grim
     slurp
     swappy
+    satty
+    flameshot
   ];
 
   # Set session variables
