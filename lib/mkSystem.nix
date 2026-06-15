@@ -40,6 +40,7 @@ nixosSystem {
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = {
+          inherit inputs;
           inherit pkgs-stable;
         };
 

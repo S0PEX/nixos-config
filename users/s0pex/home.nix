@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   pkgs-stable,
@@ -10,7 +11,6 @@ let
   # Java SDKs
   jdksPath = ".jdks"; # IntelliJ's default path for Java SDKs
   additionalJDKs = with pkgs; [
-    jdk11
     jdk17
     jdk21
     jdk25
@@ -26,6 +26,7 @@ in
     chezmoi
 
     # Browsers
+    inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     microsoft-edge
     mullvad-browser
 
@@ -42,11 +43,15 @@ in
     jetbrains.idea
     jetbrains.datagrip
     jetbrains.phpstorm
-    # jetbrains.clion
+    jetbrains.rust-rover
 
     # Language runtimes and SDKs
     gcc
     nodejs_24
+
+    # Rust tools
+    cargo
+    rustc
 
     # Communications
     discord

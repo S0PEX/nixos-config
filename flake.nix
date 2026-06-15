@@ -12,9 +12,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Additional inputs
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    # Utilities for flake development
     import-tree.url = "github:vic/import-tree";
     flake-parts.url = "github:hercules-ci/flake-parts";
-
   };
 
   outputs =
