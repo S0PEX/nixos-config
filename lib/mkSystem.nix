@@ -3,31 +3,23 @@
 }:
 
 {
-  user,
-  system,
+  self,
   systemName,
-  systemVersion,
+  system,
+  modules ? [ ],
 }:
 
 let
   inherit (inputs.nixpkgs) lib;
   inherit (lib) nixosSystem;
-  inherit (inputs) import-tree flake-parts;
+  home-manager = inputs.home-manager.nixosModules;
   pkgs-stable = import inputs.nixpkgs-stable {
     inherit system;
     config.allowUnfree = true;
   };
-  home-manager = inputs.home-manager.nixosModules;
 in
 nixosSystem {
   modules = [
-    # Base configuration
-    (import-tree ../nixos)
-
-    # System-specific configuration
-    ../users/${user}/nixos.nix
-    (import-tree ../hardware/${systemName})
-
     # Force the hostname to match the system name
     {
       networking.hostName = lib.mkForce systemName;
@@ -43,12 +35,20 @@ nixosSystem {
           inherit inputs;
           inherit pkgs-stable;
         };
-
-        users.${user} = {
-          imports = [ ../users/${user}/home.nix ];
-          home.stateVersion = lib.mkForce systemVersion;
-        };
+        # Keep every user's home.stateVersion pinned to this host's system.stateVersion
+        sharedModules = [
+          (
+            { osConfig, ... }:
+            {
+              home.stateVersion = osConfig.system.stateVersion;
+            }
+          )
+        ];
       };
     }
-  ];
+
+    # Raw, host-specific NixOS fragments (hardware scan, base configuration.nix, etc.)
+    self.nixHosts.${systemName}
+  ]
+  ++ modules;
 }

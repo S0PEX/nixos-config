@@ -22,23 +22,11 @@
 
   outputs =
     inputs@{ flake-parts, import-tree, ... }:
-    let
-      mkSystem = import ./lib/mkSystem.nix {
-        inherit inputs;
-      };
-    in
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.home-manager.flakeModules.home-manager
+        (import-tree ./modules)
       ];
-      flake = {
-        nixosConfigurations.um790 = mkSystem {
-          user = "s0pex";
-          system = "x86_64-linux";
-          systemName = "um790";
-          systemVersion = "25.05";
-        };
-      };
       systems = [ "x86_64-linux" ];
       perSystem =
         { pkgs, system, ... }:
