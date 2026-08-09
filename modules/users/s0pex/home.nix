@@ -34,12 +34,11 @@
             microsoft-edge
             mullvad-browser
 
-            # Themes
-            nordic
+            # AI Agents
+            claude-code
 
             # Development tools
             bruno
-            claude-code
             devenv
             vscode
             rpi-imager
@@ -68,6 +67,7 @@
 
             # Others
             gimp
+            portfolio
             obs-studio
           ];
 
@@ -97,6 +97,20 @@
 
             # K8s monitoring
             k9s.enable = true;
+          };
+
+          gtk = {
+            enable = true;
+            theme = {
+              package = pkgs-stable.nordic;
+              name = "Nordic";
+            };
+            iconTheme = {
+              package = pkgs.nordzy-icon-theme;
+              name = "Nordzy";
+            };
+            # Silence home-manager warning; keep GTK4 apps themed like GTK3 ones
+            gtk4.theme = config.gtk.theme;
           };
         }
       )
