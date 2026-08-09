@@ -42,9 +42,9 @@
 
             packages = with pkgs; [
               statix
+              nixfmt
               treefmt
               pre-commit
-              nixfmt
             ];
           };
         };
