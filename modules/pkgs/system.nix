@@ -33,6 +33,7 @@
         ripgrep
         killall
         python3
+        uv
         nautilus
         coreutils
         file-roller
