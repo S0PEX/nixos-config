@@ -12,7 +12,6 @@
         sioyek
         papers
         pdfarranger
-        libreoffice-fresh
 
         # Communication
         thunderbird-bin
