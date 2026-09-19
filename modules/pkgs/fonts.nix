@@ -4,6 +4,7 @@
     {
       # System fonts for various applications
       fonts.packages = with pkgs; [
+        inter # Professional UI/email sans-serif (Segoe UI-like)
         noto-fonts # General-purpose fonts
         noto-fonts-cjk-sans # CJK fonts (Chinese, Japanese, Korean)
         noto-fonts-color-emoji # Emoji support
