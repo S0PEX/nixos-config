@@ -23,6 +23,9 @@
         {
           # Packages
           home.packages = with pkgs; [
+            basicswap
+            monero-gui
+
             # VPN
             eddie
 
@@ -30,9 +33,9 @@
             chezmoi
 
             # Browsers
-            inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
             microsoft-edge
             mullvad-browser
+            inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
 
             # AI Agents
             claude-code
@@ -60,13 +63,16 @@
             # Communications
             discord
             ferdium
+            teams-for-linux
 
             # Writing
             zotero
             diffpdf
+            obsidian
 
             # Others
             gimp
+            krita
             portfolio
             obs-studio
           ];
