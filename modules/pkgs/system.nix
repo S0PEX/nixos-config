@@ -12,6 +12,7 @@
         sioyek
         papers
         pdfarranger
+        libreoffice-stable
 
         # Communication
         thunderbird-bin

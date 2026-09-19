@@ -3,7 +3,8 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        libreoffice-fresh
+        # Spell-check dictionaries (picked up via XDG_DATA_DIRS by Thunderbird/Firefox)
+        hunspellDicts.de_DE
 
         # Hyphenation dictionaries (picked up via DICPATH by the libreoffice wrapper)
         hyphenDicts.de_DE
