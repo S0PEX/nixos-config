@@ -6,13 +6,7 @@
     in
     {
       # Enable the X server
-      services.xserver = {
-        enable = true;
-        xkb = {
-          layout = "de";
-          variant = "";
-        };
-      };
+      services.xserver.enable = true;
 
       # Simple Desktop Display Manager (SDDM)
       services.displayManager.sddm = {
