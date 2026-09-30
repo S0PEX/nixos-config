@@ -47,7 +47,7 @@
             bruno
             devenv
             vscode
-            rpi-imager
+            teleport
             gitkraken
 
             jetbrains.idea
@@ -69,7 +69,6 @@
             teams-for-linux
 
             # Writing
-            zotero
             diffpdf
             obsidian
 
