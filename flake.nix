@@ -45,6 +45,8 @@
               nixfmt
               treefmt
               pre-commit
+
+              graphify
             ];
           };
         };
