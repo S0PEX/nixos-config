@@ -12,6 +12,8 @@
         }:
 
         let
+          inherit (pkgs.stdenv.hostPlatform) system;
+
           # Java SDKs
           jdksPath = ".jdks"; # IntelliJ's default path for Java SDKs
           additionalJDKs = with pkgs; [
@@ -35,10 +37,11 @@
             # Browsers
             microsoft-edge
             mullvad-browser
-            inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
+            inputs.zen-browser.packages.${system}.default
 
             # AI Agents
             claude-code
+            inputs.self.packages.${system}.parallel-code
 
             # Development tools
             bruno
