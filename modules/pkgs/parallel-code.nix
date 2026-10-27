@@ -4,10 +4,10 @@
     { pkgs, ... }:
     let
       pname = "parallel-code";
-      version = "3.1.0";
+      version = "5.0.0";
       src = pkgs.fetchurl {
         url = "https://github.com/johannesjo/parallel-code/releases/download/v${version}/Parallel-Code-${version}.AppImage";
-        hash = "sha512-fNu55dEJrMNhjn3cQKjMVwQuggH7GPywdt+ff2j63zpRoHtxW0lYtowwNdpwu1kQd4VA9uNMZ8ov2hXRubSfZg==";
+        hash = "sha512-Jad9ztNVA+I7GNCQRO8h2eORkNry9AznYwisXkQSDxM6VHSgWysg0RELFM9n2L0Xw24rxrQQoYuJsu9hVunfMQ==";
       };
       contents = pkgs.appimageTools.extract { inherit pname version src; };
     in
