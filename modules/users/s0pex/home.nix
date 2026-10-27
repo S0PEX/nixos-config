@@ -1,6 +1,9 @@
+{ self, ... }:
 {
   flake.nixUsers.s0pex = {
     home-manager.users.s0pex.imports = [
+      self.homeModules.keybase
+
       (
         {
           inputs,
@@ -28,11 +31,11 @@
             basicswap
             monero-gui
 
-            # VPN
-            eddie
-
             # Dotfiles
             chezmoi
+
+            # Passwords
+            keepassxc
 
             # Browsers
             microsoft-edge
@@ -42,6 +45,7 @@
             # AI Agents
             claude-code
             inputs.self.packages.${system}.parallel-code
+            inputs.self.packages.${system}.orca
 
             # Development tools
             bruno
