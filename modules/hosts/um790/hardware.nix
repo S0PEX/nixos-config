@@ -29,6 +29,26 @@
           up = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
           down = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
         };
+        esbVPN = {
+          config = ''
+            config /home/s0pex/Documents/Medeora/ESB-VPN/medeora_ssl_vpn_config.ovpn
+            auth-user-pass /home/s0pex/Documents/Medeora/ESB-VPN/vpn-credentials.txt
+          '';
+          autoStart = false;
+          updateResolvConf = true;
+          up = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
+          down = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
+        };
+        tumVPN = {
+          config = ''
+            config /home/s0pex/Documents/Medeora/TUM/sslvpn-bioarchive@sportmed-client-config(V2).ovpn
+            auth-user-pass /home/s0pex/Documents/Medeora/TUM/auth.txt
+          '';
+          autoStart = false;
+          updateResolvConf = true;
+          up = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
+          down = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
+        };
       };
 
       environment.systemPackages = [
