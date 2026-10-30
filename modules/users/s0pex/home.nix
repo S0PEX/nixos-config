@@ -52,6 +52,7 @@
             devenv
             vscode
             teleport
+            glab
             gitkraken
 
             jetbrains.idea
