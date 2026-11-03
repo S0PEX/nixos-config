@@ -2,7 +2,6 @@
 {
   flake.nixUsers.s0pex = {
     home-manager.users.s0pex.imports = [
-      self.homeModules.keybase
 
       (
         {
