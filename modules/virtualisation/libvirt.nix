@@ -1,17 +1,10 @@
 {
-  flake.nixosModules.virtualisation =
-    { pkgs, ... }:
-    {
-      virtualisation.libvirtd.enable = true;
-      programs.virt-manager.enable = true;
-      virtualisation.spiceUSBRedirection.enable = true;
+  flake.nixosModules.virtualisation-libvirt = {
+    programs.virt-manager.enable = true;
+    virtualisation.libvirtd.enable = true;
+    virtualisation.spiceUSBRedirection.enable = true;
 
-      # To use the default libvirt network (virbr0) we need to install dnsmasq and allow traffic on the default bridge to reach the host.
-      # See https://nixos.wiki/wiki/Libvirt#Networking
-      environment.systemPackages = with pkgs; [
-        dnsmasq
-      ];
-
-      networking.firewall.trustedInterfaces = [ "virbr0" ];
-    };
+    # Allow traffic on the default libvirt bridge (virbr0) to reach the host
+    networking.firewall.trustedInterfaces = [ "virbr0" ];
+  };
 }

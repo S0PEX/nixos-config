@@ -1,59 +1,42 @@
+{ self, ... }:
 {
-  flake.nixHosts.um790 =
-    { config, pkgs, ... }:
+  flake.nixosModules.host-um790 =
+    { lib, pkgs, ... }:
     let
-      inherit (pkgs) update-systemd-resolved;
+      resolved = "${pkgs.update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
+      mkVpn = config: {
+        inherit config;
+        autoStart = false;
+        updateResolvConf = true;
+        up = resolved;
+        down = resolved;
+      };
     in
     {
-      services.openvpn.servers = {
-        officeVPN = {
-          config = ''
-            config /home/s0pex/VPN/artur_komaristych_new.ovpn
-            askpass /home/s0pex/VPN/artur_komaristych_new.txt
-          '';
-          autoStart = false;
-          updateResolvConf = true;
-          up = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
-          down = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
-        };
-        ueberseeVPN = {
-          config = ''
-            tls-cipher "DEFAULT:@SECLEVEL=0"
-            data-ciphers AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305:AES-128-CBC
-            config /home/s0pex/VPN/uebersee-museum/uebersee-museum.ovpn
-            auth-user-pass /home/s0pex/VPN/uebersee-museum/user_pass.txt
-            verb 4
-          '';
-          autoStart = false;
-          updateResolvConf = true;
-          up = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
-          down = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
-        };
-        esbVPN = {
-          config = ''
-            config /home/s0pex/Documents/Medeora/ESB-VPN/medeora_ssl_vpn_config.ovpn
-            auth-user-pass /home/s0pex/Documents/Medeora/ESB-VPN/vpn-credentials.txt
-          '';
-          autoStart = false;
-          updateResolvConf = true;
-          up = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
-          down = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
-        };
-        tumVPN = {
-          config = ''
-            config /home/s0pex/Documents/Medeora/TUM/sslvpn-bioarchive@sportmed-client-config(V2).ovpn
-            auth-user-pass /home/s0pex/Documents/Medeora/TUM/auth.txt
-          '';
-          autoStart = false;
-          updateResolvConf = true;
-          up = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
-          down = "${update-systemd-resolved}/libexec/openvpn/update-systemd-resolved";
-        };
-      };
+      # The VPN hooks below need resolved, so pull in OpenVPN support here
+      imports = [ self.nixosModules.networking-openvpn ];
 
-      environment.systemPackages = [
-        update-systemd-resolved
-      ];
+      services.openvpn.servers = lib.mapAttrs (_: mkVpn) {
+        officeVPN = ''
+          config /home/s0pex/VPN/artur_komaristych_new.ovpn
+          askpass /home/s0pex/VPN/artur_komaristych_new.txt
+        '';
+        ueberseeVPN = ''
+          tls-cipher "DEFAULT:@SECLEVEL=0"
+          data-ciphers AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305:AES-128-CBC
+          config /home/s0pex/VPN/uebersee-museum/uebersee-museum.ovpn
+          auth-user-pass /home/s0pex/VPN/uebersee-museum/user_pass.txt
+          verb 4
+        '';
+        esbVPN = ''
+          config /home/s0pex/Documents/Medeora/ESB-VPN/medeora_ssl_vpn_config.ovpn
+          auth-user-pass /home/s0pex/Documents/Medeora/ESB-VPN/vpn-credentials.txt
+        '';
+        tumVPN = ''
+          config /home/s0pex/Documents/Medeora/TUM/sslvpn-bioarchive@sportmed-client-config(V2).ovpn
+          auth-user-pass /home/s0pex/Documents/Medeora/TUM/auth.txt
+        '';
+      };
 
       programs.java.enable = true;
 

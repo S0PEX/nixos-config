@@ -1,10 +1,6 @@
 {
-  flake.nixosModules.networking =
-    { pkgs, ... }:
-    {
-      networking.networkmanager.plugins = [ pkgs.networkmanager-openvpn ];
+  flake.nixosModules.networking.networking.networkmanager.enable = true;
 
-      # Tray GUI (starts with the graphical session)
-      programs.nm-applet.enable = true;
-    };
+  # Tray GUI (starts with the graphical session)
+  flake.nixosModules.desktop.programs.nm-applet.enable = true;
 }

@@ -4,7 +4,6 @@
   inputs = {
     # NixOS official package sources
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable?shallow=1";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05?shallow=1";
 
     # Home Manager for user-specific configurations
     home-manager = {
@@ -13,7 +12,11 @@
     };
 
     # Additional inputs
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
     # Utilities for flake development
     import-tree.url = "github:vic/import-tree";
@@ -43,7 +46,6 @@
             packages = with pkgs; [
               statix
               nixfmt
-              treefmt
               pre-commit
 
               graphify

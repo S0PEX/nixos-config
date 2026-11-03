@@ -1,21 +1,5 @@
 {
   flake.nixosModules.config = {
-    # Enable the Flakes feature and the accompanying new nix command-line tool
-    nix.settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-
-      trusted-users = [
-        "root"
-        "@wheel"
-      ];
-    };
-
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
-
     # Set time zone.
     time.timeZone = "Europe/Berlin";
 

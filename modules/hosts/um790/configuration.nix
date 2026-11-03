@@ -1,16 +1,18 @@
 {
-  flake.nixHosts.um790 =
+  flake.nixosModules.host-um790 =
     { pkgs, ... }:
     {
+      networking.hostName = "um790";
+
       # Bootloader.
-      boot.loader.systemd-boot.enable = true;
+      boot.loader.systemd-boot = {
+        enable = true;
+        configurationLimit = 10;
+      };
       boot.loader.efi.canTouchEfiVariables = true;
 
       # Use latest kernel.
       boot.kernelPackages = pkgs.linuxPackages_latest;
-
-      # Enable networking
-      networking.networkmanager.enable = true;
 
       # Enable CUPS to print documents.
       services.printing.enable = true;

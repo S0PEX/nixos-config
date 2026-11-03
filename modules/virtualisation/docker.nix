@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.virtualisation = {
+  flake.nixosModules.virtualisation-docker = {
     virtualisation.docker = {
       enable = true;
       daemon.settings = {

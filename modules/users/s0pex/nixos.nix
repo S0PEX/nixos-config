@@ -1,19 +1,25 @@
+{ self, ... }:
 {
-  flake.nixUsers.s0pex =
-    { pkgs, ... }:
-    {
-      # Define a user account. Don't forget to set a password with ‘passwd’.
-      users.users.s0pex = {
-        isNormalUser = true;
-        description = "Artur";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-          "docker"
-          "libvirtd"
-        ];
+  flake.nixosModules.user-s0pex = {
+    imports = [ self.nixosModules.home-manager ];
 
-        packages = with pkgs; [ ];
-      };
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    users.users.s0pex = {
+      isNormalUser = true;
+      description = "Artur";
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "docker"
+        "libvirtd"
+      ];
     };
+
+    home-manager.users.s0pex.imports = with self.homeModules; [
+      s0pex
+      s0pex-programming
+      shell-fish
+      theme-nordic
+    ];
+  };
 }
