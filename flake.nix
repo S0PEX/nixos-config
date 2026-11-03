@@ -21,6 +21,10 @@
     # Utilities for flake development
     import-tree.url = "github:vic/import-tree";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -28,28 +32,26 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.home-manager.flakeModules.home-manager
+        inputs.git-hooks.flakeModule
         (import-tree ./modules)
       ];
       systems = [ "x86_64-linux" ];
       perSystem =
-        { pkgs, system, ... }:
+        { config, pkgs, ... }:
         {
           formatter = pkgs.nixfmt;
+
+          pre-commit.settings.hooks = {
+            nixfmt.enable = true;
+            statix.enable = true;
+          };
 
           devShells.default = pkgs.mkShellNoCC {
             name = "nixos-dev-shell";
 
-            shellHook = ''
-              ${pkgs.pre-commit}/bin/pre-commit install
-            '';
+            shellHook = config.pre-commit.installationScript;
 
-            packages = with pkgs; [
-              statix
-              nixfmt
-              pre-commit
-
-              graphify
-            ];
+            packages = [ pkgs.graphify ] ++ config.pre-commit.settings.enabledPackages;
           };
         };
     };

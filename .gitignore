@@ -1,3 +1,4 @@
 .direnv/
 
 graphify-out/
+/.pre-commit-config.yaml
